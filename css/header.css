@@ -20,9 +20,21 @@
 
 }
 
-/*   CONTENEDOR PRINCIPAL   */
-.container {
-    border: 1px solid black;
-    height: 1000px;
+/*   HEADER   */
+.header {
+    background-color: var(--principal);
 }
 
+.contenedor__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ancla {
+    margin-left: 5%;
+    font-family: var(--roboto);
+    font-size: 1rem;
+    color: var(--blanco);
+    text-decoration: none;
+}

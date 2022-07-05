@@ -19,10 +19,3 @@
     --ubunto: 'Ubuntu', sans-serif;
 
 }
-
-/*   CONTENEDOR PRINCIPAL   */
-.container {
-    border: 1px solid black;
-    height: 1000px;
-}
-

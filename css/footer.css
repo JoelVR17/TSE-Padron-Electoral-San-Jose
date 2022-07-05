@@ -20,9 +20,10 @@
 
 }
 
-/*   CONTENEDOR PRINCIPAL   */
-.container {
-    border: 1px solid black;
-    height: 1000px;
+/*   FOOTER   */
+.footer {
+    width: 100%;
+    height: 10%;
+    background-color: var(--negro);
+    color: var(--blanco);
 }
-
