@@ -1,0 +1,22 @@
+/*  SE ESTABLECEN LAS VARIABLES   */
+:root {
+
+    /*    COLORES     */
+    --principal: #A9BF5A;
+    --secundario: #627583;
+    --tercero: #E4DDD3;
+    --blanco: #FFFFFF;
+    --negro: #000000;
+
+    /*    FUENTES     */
+    --krub: 'krub', sans-serif;
+    --mukta: 'Mukta', sans-serif;
+    --opensans: 'Open Sans', sans-serif;
+    --ptsans: 'PT Sans', sans-serif;
+    --quicksand: 'Quicksand', sans-serif;
+    --roboto: 'Roboto Condensed', sans-serif; /*utilizar esta principal*/
+    --staarliches: 'Staatliches', cursive;
+    --ubunto: 'Ubuntu', sans-serif;
+
+}
+
