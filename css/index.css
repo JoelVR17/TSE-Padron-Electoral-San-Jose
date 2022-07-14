@@ -19,10 +19,30 @@
     --ubunto: 'Ubuntu', sans-serif;
 
 }
+/*  PRINCIPALES   */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 
 /*   CONTENEDOR PRINCIPAL   */
 .container {
-    border: 1px solid black;
-    height: 1000px;
+    height: auto;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.contenedor__titulo {
+    width: 100%;
+}
+
+.titulo {
+    color: red;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
 }
 

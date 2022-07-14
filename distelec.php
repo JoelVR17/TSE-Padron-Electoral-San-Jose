@@ -12,8 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/consulta.css">
-    <title>TSE - Consultas</title>
+    <link rel="stylesheet" href="css/reporte.css">
+    <title>TSE - Reportes</title>
 </head> <!--fin.Head-->
 
 <!-- BODY -->
@@ -43,7 +43,7 @@
 
     <!-- MAIN -->
     <main class="container">
-        <h1>CONSULTAS</h1>
+        <h1>DISTELEC</h1>
     </main> <!--fin.main-->
 
     <!-- FOOTER -->

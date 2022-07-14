@@ -28,10 +28,13 @@
                         <img src="img/log.png" alt="" width="200" height="70" class="d-inline-block align-text-top">
                     </a>
                     <a class="ancla" href="consulta.php">
-                        <p class="titulo">Consultar</p>
+                        <p class="ancla">Consultar</p>
                     </a>
                     <a class="ancla" href="reporte.php">
-                        <p class="titulo">Reportes</p>
+                        <p class="ancla">Reportes</p>
+                    </a>
+                    <a class="ancla" href="distelec.php">
+                        <p class="ancla">Distelec</p>
                     </a>
                 </div>
             </div>
