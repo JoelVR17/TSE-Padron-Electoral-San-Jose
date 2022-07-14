@@ -11,28 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login_registro.css">
-    <title>TSE - Registro</title>
+    <title>TSE - Login</title>
 </head> <!--fin.Head-->
 
 <!-- BODY -->
 <body>
 
-     <!-- CONTENIDO PRINCIPAL -->
-     <div class="contenedor__titulo">
-        <h1>¡Regístrate!</h1>
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="contenedor__titulo">
+        <h1 class="titulo-lr">¡Bienvenido!</h1>
     </div>
 
     <main class="contenedor">
         <div class="contenedor__modal">
             <form class="formulario row g-3">
-                <div class="col-6">
-                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
-                </div>  
-                <div class="col-6">
-                    <label for="exampleInputEmail1" class="form-label">Apellido</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
-                </div>
                 <div class="col-12">
                     <label for="exampleInputEmail1" class="form-label">Usuario</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
@@ -41,16 +33,15 @@
                     <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <button type="submit" class="btn btn-primary"><a href="login.php">Registrarse</a></button>
+                <a href="index.html" type="submit" class="btn btn-iniciar btn-primary">Entrar</a>
                 <div class="contenedor__pregunta">
-                    <p>¿Ya tienes cuenta? -
-                        <a href="login.php">Inicia Sesión</a>
+                    <p class="pregunta">¿No tienes cuenta? -
+                        <a class="registro-inicio" href="registro.html">Registrate</a>
                     </p>
                 </div>
             </form>
         </div>
     </main> <!--fin.main-->
-
 </body> <!--fin.body-->
 
 <!-- JAVASCRIPT -->

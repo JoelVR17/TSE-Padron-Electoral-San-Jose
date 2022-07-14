@@ -51,13 +51,6 @@ html, body {
     background-color: var(--principal);
 }
 
-h1 {
-    font-size: 4em;
-    font-weight: 700;
-    font-family: var(--roboto);
-    color: var(--blanco);
-}
-
 /*  CONTENEDOR DEL MODAL   */
 .contenedor__modal {
     box-shadow: 5px 5px 18px var(--negro);
@@ -84,4 +77,52 @@ h1 {
 /*  ULTIMO INPUT   */
 #ultimo {
     margin-bottom: 2%;
+}
+
+/*  PARRAFO DE PREGUNTA */
+.pregunta {
+    color: var(--blanco);
+    font-weight: 500;
+}
+
+.registro-inicio {
+    text-decoration: none;
+    color: var(--blanco);
+    font-weight: 300;
+}
+
+.registro-inicio:hover {
+    color: var(--principal);
+}
+
+/*  LABEL   */
+label {
+    color: var(--negro);
+    font-family: var(--ubunto);
+    font-weight: 400;
+}
+
+/*  INPUT   */
+input {
+    border-radius: 5px !important;
+}
+
+/*  TITULO  */
+.titulo-lr {
+    color: var(--blanco);
+    font-weight: bold;
+    font-size: 4.4rem;
+}
+
+/*  BOTON DE INICIAR SESION O REGISTRARSE   */
+.btn-iniciar {
+    padding: 1rem;
+    border-radius: 5px;
+    color: var(--blanco);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.btn {
+    max-height: 3.8rem;
 }
