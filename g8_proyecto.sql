@@ -25,28 +25,28 @@ CREATE TABLE DISTELEC (
 /*  SE CREA TABLA DE BITACORA  */
 CREATE TABLE BITACORA (
 
-    ID number(11) primary key,   
+    ID number PRIMARY KEY ,   
     CEDULA number(9),
     FECHA date
 
 )
 
 /*  SE CREA TABLA DE ROL  */
-CREATE TABLE rol (
+CREATE TABLE ROL (
 
-    ID number(11) primary key,   
+    ID_ROL number(11) PRIMARY KEY,   
     NOMBRE varchar2(10)
 
 )
 
 /*  SE CREA TABLA DE USUARIO  */
-CREATE TABLE usuario (
+CREATE TABLE USUARIO (
 
-    idUsuario number(11) primary key,   
-    usuario varchar2(20),
-    contrasena varchar2(20),
-    idRol number(11),
-    constraint fk_rol foreign key(idRol) references hr.rol(ID)
+    ID_USUARIO number primary key,   
+    USUARIO varchar2(20),
+    CONTRASENA varchar2(20),
+    ID_ROL number(11),
+    FOREIGN KEY(ID_ROL) REFERENCES ROL(ID_ROL)
 
 )
 
