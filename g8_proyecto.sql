@@ -34,8 +34,8 @@ CREATE TABLE BITACORA (
 /*  SE CREA TABLA DE ROL  */
 CREATE TABLE rol (
 
-    idRol number(11) primary key,   
-    cedula varchar2(10)
+    ID number(11) primary key,   
+    NOMBRE varchar2(10)
 
 )
 
@@ -46,7 +46,7 @@ CREATE TABLE usuario (
     usuario varchar2(20),
     contrasena varchar2(20),
     idRol number(11),
-    constraint fk_rol foreign key(idRol) references hr.rol(idRol)
+    constraint fk_rol foreign key(idRol) references hr.rol(ID)
 
 )
 
