@@ -1,0 +1,35 @@
+
+// //DELETE SPECIFIC POST
+// router.delete("/:employeeID", async (req, res) => {
+//   try {
+//     const postDeleted = await Post.findByIdAndRemove(req.params.postID);
+//     res.json(postDeleted);
+//   } catch (err) {
+//     res.json({
+//       message: err,
+//     });
+//   }
+// });
+
+// //UPDATE Post
+// router.patch("/:postID", async (req, res) => {
+//   try {
+//     const updatedPost = await Post.updateOne(
+//       {
+//         _id: req.params.postID,
+//       },
+//       {
+//         $set: {
+//           title: req.body.title,
+//           description: req.body.description,
+//         },
+//       }
+//     );
+
+//     res.json(updatedPost);
+//   } catch (err) {
+//     res.json({
+//       message: err,
+//     });
+//   }
+// });
