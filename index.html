@@ -76,7 +76,6 @@
             </thead>
 
             <tbody>
-
             </tbody>
 
             <tfoot>
@@ -91,6 +90,13 @@
             </tfoot>
 
         </table>
+
+        <br/>
+
+        <form id="formPadron" action="">
+            <input id="subirPadron" id="fileInput" type="file" accept=".txt" name="padron" class="btn__cargar" ></button>
+            <button name="inputPadron" type="submit" class="btn__cargar" >Subir archivo de texto</button>
+        </form>
     </div> <!--fin.padron-->
 
     <!-- FOTO -->
@@ -111,7 +117,7 @@
 
         <br>
 
-        <!-- TABLA PARA MOSTRAR EL PADRON -->
+        <!-- TABLA PARA MOSTRAR EL CODELEC -->
         <table id="tablaCodelec" class="table table-striped" style="width:100%">
 
             <thead>
@@ -134,6 +140,13 @@
             </tfoot>
 
         </table>
+
+        <br/>
+
+        <form id="formDistelec" action="">
+            <input id="subirDistelec" id="fileInput" type="file" accept=".txt" name="padron" class="btn__cargar" ></button>
+            <button name="inputDistelec" type="submit" class="btn__cargar" >Subir archivo de texto</button>
+        </form>
     </div> <!--fin.codelec-->
 
     <!-- FOOTER -->
@@ -189,5 +202,58 @@
     })
     });
 </script>
+
+<script>
+
+    document.getElementById('formPadron').addEventListener("submit", e => {
+        e.preventDefault(); 
+
+        const submitPadron = document.getElementById('subirPadron').files[0];
+
+        const formDataPadron = new FormData();
+
+        formDataPadron.append('archivo-padron', submitPadron, 'SJ.txt')
+
+
+        //api de prueba. Revisaar con backend 
+        fetch('http://httpbin.org/post', {
+            method: "POST",
+            body: formDataPadron, 
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(data));
+    });
+
+    
+ 
+</script>
+
+
+
+<script>
+
+    document.getElementById('formDistelec').addEventListener("submit", e => {
+        e.preventDefault(); 
+
+        const submitDistelec = document.getElementById('subirDistelec').files[0];
+
+        const formDataDistelec = new FormData();
+
+        formDataDistelec.append('archivo-distelec', submitDistelec, 'Distelec.txt')
+
+        fetch('http://httpbin.org/post', {
+            method: "POST",
+            body: formDataDistelec, 
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(data));
+    });
+
+    
+ 
+</script>
+
 
 </html> <!--fin.html-->
