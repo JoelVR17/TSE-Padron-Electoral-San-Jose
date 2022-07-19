@@ -56,7 +56,8 @@
         </div>
 
         <form action="">
-            <button id="cargarPadron" name="padron" class="btn__cargar" >Cargar Datos</button>
+            <button id="cargarPadron"  type="button" name="padron" class="btn__cargar" >Cargar Datos</button>
+            
         </form>
 
         <br>
@@ -94,7 +95,7 @@
         <br/>
 
         <form id="formPadron" action="">
-            <input id="subirPadron" id="fileInput" type="file" accept=".txt" name="padron" class="btn__cargar" ></button>
+            <input id="subirPadron" id="fileInput" type="file" accept=".txt" name="padron" class="btn__cargar" ></input>
             <button name="inputPadron" type="submit" class="btn__cargar" >Subir archivo de texto</button>
         </form>
     </div> <!--fin.padron-->
@@ -112,7 +113,8 @@
         </div>
 
         <form action="">
-            <button name="cargarDistelec" class="btn__cargar" >Cargar Datos</button>
+            <button id="cargarDistelec" name="cargarDistelec" type="button" class="btn__cargar" >Cargar Datos</button>
+
         </form>
 
         <br>
@@ -144,7 +146,7 @@
         <br/>
 
         <form id="formDistelec" action="">
-            <input id="subirDistelec" id="fileInput" type="file" accept=".txt" name="padron" class="btn__cargar" ></button>
+            <input id="subirDistelec" id="fileInput" type="file" accept=".txt" name="padron" class="btn__cargar" ></input>
             <button name="inputDistelec" type="submit" class="btn__cargar" >Subir archivo de texto</button>
         </form>
     </div> <!--fin.codelec-->
@@ -165,12 +167,33 @@
 <script> 
     $(document).ready(function () {
         $.ajax({
+        'url': "http://localhost:3000/distelec",
+        'method': "GET",
+        'cache': 'false',
+        'headers' : {'Cache-Control':'no-store'}
+        
+    }).done( function(data) {
+
+        $("#tablaCodelec").dataTable( {
+            "aaData": data,
+            columns: [
+        { data: 0 },
+        { data: 1 },
+        { data: 2 },
+        { data: 3 }
+    ]
+        })
+    }),
+
+        $.ajax({
         'url': "http://localhost:3000/padron",
         'method': "GET",
-        'contentType': 'application/json',
-        "dataSrc": ""
+        'cache': 'false',
+        'headers' : {'Cache-Control':'no-store'}
 
+        
     }).done( function(data) {
+        console.log(data);
         $("#tablaPadron").dataTable( {
             "aaData": data,
             columns: [
@@ -182,25 +205,23 @@
         { data: 5 }
     ]
         })
-    }),
-    $.ajax({
-        'url': "http://localhost:3000/distelec",
-        'method': "GET",
-        'contentType': 'application/json',
-        "dataSrc": ""
-
-    }).done( function(data) {
-        $("#tablaCodelec").dataTable( {
-            "aaData": data,
-            columns: [
-        { data: 0 },
-        { data: 1 },
-        { data: 2 },
-        { data: 3 }
-    ]
-        })
-    })
     });
+
+    });
+
+    $("#cargarPadron").click(()=>{
+        $.ajax({
+        'url': "http://localhost:3000/padron/insert",
+        'method': "GET",
+    }).done(console.log("Done"));
+    }),
+    $("#cargarDistelec").click(()=>{
+        $.ajax({
+        'url': "http://localhost:3000/distelec/insert",
+        'method': "GET",
+    }).done(console.log("Done Distelec"));
+    });
+
 </script>
 
 <script>
@@ -212,17 +233,19 @@
 
         const formDataPadron = new FormData();
 
-        formDataPadron.append('archivo-padron', submitPadron, 'SJ.txt')
+        formDataPadron.append('file', submitPadron, 'SJ.txt')
 
 
-        //api de prueba. Revisaar con backend 
-        fetch('http://httpbin.org/post', {
+        //api de padron guarda archivo
+        fetch('http://localhost:3000/padron/upload-padron', {
             method: "POST",
             body: formDataPadron, 
         })
         .then(res => res.json())
         .then(data => console.log(data))
-        .catch(err => console.log(data));
+        .catch(err => console.log(err));
+
+       
     });
 
     
@@ -240,15 +263,16 @@
 
         const formDataDistelec = new FormData();
 
-        formDataDistelec.append('archivo-distelec', submitDistelec, 'Distelec.txt')
+        formDataDistelec.append('file', submitDistelec, 'distelec.txt')
 
-        fetch('http://httpbin.org/post', {
+        fetch('http://localhost:3000/distelec/upload-distelec', {
             method: "POST",
             body: formDataDistelec, 
         })
         .then(res => res.json())
         .then(data => console.log(data))
-        .catch(err => console.log(data));
+        .catch(err => console.log(err));
+       
     });
 
     

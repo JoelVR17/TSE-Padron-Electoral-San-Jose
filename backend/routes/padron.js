@@ -4,17 +4,7 @@ const oracledb = require("oracledb");
 const lineReader = require("line-reader");
 const fs = require("fs");
 const eol = require("eol");
-const multer = require("multer");
-var storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, "./uploads");
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.originalname);
-  },
-});
 
-const upload = multer({ storage: storage }).single("padron");
 // const Post = require('../models/Post');
 const config = {
   user: "TSE",
@@ -26,8 +16,10 @@ router.get("/", async (req, res) => {
   let conn;
   try {
     conn = await oracledb.getConnection(config);
-    const padron = await conn.execute("select * from padron fetch next 50000 rows only");
-     //const padron = await conn.execute("select * from padron");
+    const padron = await conn.execute(
+      "select * from padron fetch next 50000 rows only"
+    );
+    //const padron = await conn.execute("select * from padron");
     res.json(padron.rows);
   } catch (err) {
     res.json({
@@ -41,11 +33,12 @@ router.get("/", async (req, res) => {
 });
 let padron = [];
 router.get("/insert", async (req, res) => {
+  padron = [];
   try {
     lineReader.eachLine("./uploads/SJ.txt", function (line, last) {
       const regex = /\x20{2,}/g;
       let result = line.replace(regex, ``);
-      result = result.replace('�','Ñ');
+      result = result.replace("�", "Ñ");
       let array = result.split(",");
       let elector = {
         a: array[0].toString(),
@@ -91,15 +84,33 @@ router.get("/insert", async (req, res) => {
 //   }
 // });
 
-router.post("/", upload, async (req, res) => {
+router.post("/upload-padron", async (req, res) => {
   try {
-    fs.existsSync("./uploads/SJ.txt");
-    res.json("Padron de San Jose Subido correctamente.");
+    if (!req.files) {
+      res.send({
+        status: false,
+        message: "No file uploaded",
+      });
+    } else {
+      //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+      let file = req.files.file;
+
+      //Use the mv() method to place the file in upload directory (i.e. "uploads")
+      file.mv("./uploads/" + file.name);
+
+      //send response
+      res.send({
+        status: true,
+        message: "File is uploaded",
+        data: {
+          name: file.name,
+          mimetype: file.mimetype,
+          size: file.size,
+        },
+      });
+    }
   } catch (err) {
-    res.json({
-      message: err,
-    });
-  } finally {
+    res.status(500).send(err);
   }
 });
 
@@ -123,17 +134,17 @@ async function insertPadron() {
   }
 }
 
-async function deletePadron(){
+async function deletePadron() {
   const conn = await oracledb.getConnection(config);
   try {
-    console.log("LEGAMOS");
-     conn.execute("DELETE padron");  
-     conn.commit();
+    console.log("Eliminando registros previos");
+    conn.execute("DELETE padron");
+    conn.commit();
   } catch (err) {
     console.log(err);
   } finally {
     if (conn) {
-     conn.close();
+      conn.close();
     }
   }
 }

@@ -1,16 +1,30 @@
 const express = require("express");
-const app = express();
+const fileUpload = require("express-fileupload");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const _ = require("lodash");
+const app = express();
 
 require("dotenv/config");
 
-// //Middlewares
+app.use(
+  fileUpload({
+    createParentPath: true,
+  })
+);
 
-// app.use('/posts',()=>{
-//     console.log('this is a middleware working.');
-// })
+app.use((req, res, next) => {
+  res.set("Cache-Control", "no-cache");
+  next();
+});
+app.set("etag", false);
 
+//add other middleware
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 app.use(express.json());
 
 //IMPORT ROUTES
