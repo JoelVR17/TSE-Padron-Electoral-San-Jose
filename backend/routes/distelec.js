@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const oracledb = require("oracledb");
+oracledb.autoCommit = true;
 const lineReader = require("line-reader");
 const fs = require("fs");
 const eol = require("eol");
@@ -17,7 +18,7 @@ router.get("/", async (req, res) => {
   try {
     conn = await oracledb.getConnection(config);
     const distelec = await conn.execute(
-      "select * from distelec fetch next 2100 rows only"
+      "select * from distelec fetch next 2134 rows only"
     );
     // const distelec = await conn.execute("select * from distelec");
     res.json(distelec.rows);
@@ -133,7 +134,7 @@ async function deleteDistelec() {
   const conn = await oracledb.getConnection(config);
   try {
     console.log("Eliminando registros previos");
-    conn.execute("DELETE distelec");
+    conn.execute("delete distelec COMMIT");
     conn.commit();
   } catch (err) {
     console.log(err);

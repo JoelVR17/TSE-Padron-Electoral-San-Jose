@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const oracledb = require("oracledb");
+oracledb.autoCommit = true;
 const lineReader = require("line-reader");
 const fs = require("fs");
 const eol = require("eol");
@@ -17,7 +18,7 @@ router.get("/", async (req, res) => {
   try {
     conn = await oracledb.getConnection(config);
     const padron = await conn.execute(
-      "select * from padron fetch next 50000 rows only"
+      "select * from padron fetch next 40000 rows only"
     );
     //const padron = await conn.execute("select * from padron");
     res.json(padron.rows);
@@ -138,7 +139,7 @@ async function deletePadron() {
   const conn = await oracledb.getConnection(config);
   try {
     console.log("Eliminando registros previos");
-    conn.execute("DELETE padron");
+    conn.execute("DELETE padron COMMIT");
     conn.commit();
   } catch (err) {
     console.log(err);
