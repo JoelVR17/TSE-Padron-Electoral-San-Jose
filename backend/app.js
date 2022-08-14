@@ -31,8 +31,10 @@ app.use(express.json());
 
 const padronRoute = require("./routes/padron");
 const distelecRoute = require("./routes/distelec");
+const loginRoute = require("./routes/login.js");
 
 app.use("/padron", padronRoute);
+app.use("/login", loginRoute);
 
 app.use("/distelec", distelecRoute);
 

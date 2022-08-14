@@ -3,15 +3,8 @@ const router = express.Router();
 const oracledb = require("oracledb");
 oracledb.autoCommit = true;
 const lineReader = require("line-reader");
-const fs = require("fs");
-const eol = require("eol");
 
-// const Post = require('../models/Post');
-const config = {
-  user: "TSE",
-  password: "tse123",
-  connectString: "localhost:1521/oracle",
-};
+const config = require("../config");
 //GET ALL
 router.get("/", async (req, res) => {
   let conn;

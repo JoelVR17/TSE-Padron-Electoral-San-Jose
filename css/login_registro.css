@@ -1,128 +1,126 @@
 /*  SE ESTABLECEN LAS VARIABLES   */
 :root {
+  /*    COLORES     */
+  --principal: #a9bf5a;
+  --secundario: #627583;
+  --tercero: #e4ddd3;
+  --blanco: #ffffff;
+  --negro: #000000;
 
-    /*    COLORES     */
-    --principal: #A9BF5A;
-    --secundario: #627583;
-    --tercero: #E4DDD3;
-    --blanco: #FFFFFF;
-    --negro: #000000;
-
-    /*    FUENTES     */
-    --krub: 'krub', sans-serif;
-    --mukta: 'Mukta', sans-serif;
-    --opensans: 'Open Sans', sans-serif;
-    --ptsans: 'PT Sans', sans-serif;
-    --quicksand: 'Quicksand', sans-serif;
-    --roboto: 'Roboto Condensed', sans-serif; /*utilizar esta principal*/
-    --staarliches: 'Staatliches', cursive;
-    --ubunto: 'Ubuntu', sans-serif;
-
+  /*    FUENTES     */
+  --krub: "krub", sans-serif;
+  --mukta: "Mukta", sans-serif;
+  --opensans: "Open Sans", sans-serif;
+  --ptsans: "PT Sans", sans-serif;
+  --quicksand: "Quicksand", sans-serif;
+  --roboto: "Roboto Condensed", sans-serif; /*utilizar esta principal*/
+  --staarliches: "Staatliches", cursive;
+  --ubunto: "Ubuntu", sans-serif;
 }
-
 
 /*  SE ESTABLECEN LOS ESTILOS   */
 
 /*   HTML y BODY  */
-html, body {
-    height: 100%;
-    margin: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 
 /*  CONTENEDOR PRINCIPAL   */
 .contenedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    width: 100%;
-    height: 85%;
-    background-color: var(--principal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 85%;
+  background-color: var(--principal);
 }
 
 /*  COTENEDOR DE BIENVENIDA   */
 .contenedor__titulo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    width: 100%;
-    height: 15%;
-    background-color: var(--principal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 15%;
+  background-color: var(--principal);
 }
 
 /*  CONTENEDOR DEL MODAL   */
 .contenedor__modal {
-    box-shadow: 5px 5px 18px var(--negro);
-    width: 40%;
-    height: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--secundario);
+  box-shadow: 5px 5px 18px var(--negro);
+  width: 40%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secundario);
 }
 
 /*  FORMULARIO   */
 .formulario {
-    width: 100%;
-    height: 100%;
-    padding: 2%;
+  width: 100%;
+  height: 100%;
+  padding: 2%;
 }
 
 .contenedor__pregunta {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 /*  ULTIMO INPUT   */
 #ultimo {
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 /*  PARRAFO DE PREGUNTA */
 .pregunta {
-    color: var(--blanco);
-    font-weight: 500;
+  color: var(--blanco);
+  font-weight: 500;
 }
 
 .registro-inicio {
-    text-decoration: none;
-    color: var(--blanco);
-    font-weight: 300;
+  text-decoration: none;
+  color: var(--blanco);
+  font-weight: 300;
 }
 
 .registro-inicio:hover {
-    color: var(--principal);
+  color: var(--principal);
 }
 
 /*  LABEL   */
 label {
-    color: var(--negro);
-    font-family: var(--ubunto);
-    font-weight: 400;
+  color: var(--negro);
+  font-family: var(--ubunto);
+  font-weight: 400;
 }
 
 /*  INPUT   */
 input {
-    border-radius: 5px !important;
+  border-radius: 5px !important;
 }
 
 /*  TITULO  */
 .titulo-lr {
-    color: var(--blanco);
-    font-weight: bold;
-    font-size: 4.4rem;
+  color: var(--blanco);
+  font-weight: bold;
+  font-size: 4.4rem;
 }
 
 /*  BOTON DE INICIAR SESION O REGISTRARSE   */
 .btn-iniciar {
-    padding: 1rem;
-    border-radius: 5px;
-    color: var(--blanco);
-    font-size: 1.3rem;
-    font-weight: 600;
+  padding: 1rem;
+  border-radius: 5px;
+  color: var(--blanco);
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .btn {
-    max-height: 3.8rem;
+  max-height: 3.8rem;
 }
