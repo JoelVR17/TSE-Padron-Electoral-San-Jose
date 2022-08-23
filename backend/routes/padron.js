@@ -27,6 +27,112 @@ router.get("/", async (req, res) => {
     }
   }
 });
+//GET 5 NOMBRES MAS COMUNES
+router.get("/top5nombresmascomunes", async (req, res) => {
+  let conn;
+  try {
+    conn = await oracledb.getConnection(config);
+    const consulta = await conn.execute(`BEGIN
+    top5nombresmascomunes();
+    END;
+    `);
+
+    res.json(consulta.rows);
+  } catch (err) {
+    res.json({
+      message: err,
+    });
+  } finally {
+    if (conn) {
+      await conn.close();
+    }
+  }
+});
+//GET 5 NOMBRES MENOS COMUNES
+router.get("/top5nombresmenoscomunes", async (req, res) => {
+  let conn;
+  try {
+    conn = await oracledb.getConnection(config);
+
+    const consulta = await conn.execute(`BEGIN
+    top5nombresmenoscomunes();
+    END;
+    `);
+
+    res.json(consulta.rows);
+  } catch (err) {
+    res.json({
+      message: err,
+    });
+  } finally {
+    if (conn) {
+      await conn.close();
+    }
+  }
+});
+
+//GET 5 CANTONES CON MAS ELECTORES
+router.get("/top5cantones", async (req, res) => {
+  let conn;
+  try {
+    conn = await oracledb.getConnection(config);
+    const consulta = await conn.execute(`BEGIN
+    top5cantones();
+    END;
+    `);
+    res.json(consulta.rows);
+  } catch (err) {
+    res.json({
+      message: err,
+    });
+  } finally {
+    if (conn) {
+      await conn.close();
+    }
+  }
+});
+
+//GET NOMBRES CON LAS 5 VOCALES
+router.get("/reportevocales", async (req, res) => {
+  let conn;
+  try {
+    conn = await oracledb.getConnection(config);
+    const consulta = await conn.execute(`BEGIN
+    reportevocales();
+    END;
+    `);
+
+    res.json(consulta.rows);
+  } catch (err) {
+    res.json({
+      message: err,
+    });
+  } finally {
+    if (conn) {
+      await conn.close();
+    }
+  }
+});
+
+router.get("/", async (req, res) => {
+  let conn;
+  try {
+    conn = await oracledb.getConnection(config);
+    const padron = await conn.execute(
+      "select * from padron fetch next 40000 rows only"
+    );
+    //const padron = await conn.execute("select * from padron");
+    res.json(padron.rows);
+  } catch (err) {
+    res.json({
+      message: err,
+    });
+  } finally {
+    if (conn) {
+      await conn.close();
+    }
+  }
+});
 let padron = [];
 router.get("/insert", async (req, res) => {
   padron = [];
@@ -59,26 +165,6 @@ router.get("/insert", async (req, res) => {
     });
   }
 });
-//GET SPECIFIC Employee
-// router.get("/:employeeID", async (req, res) => {
-//   let conn;
-//   try {
-//     conn = await oracledb.getConnection(config);
-//     const employee = await conn.execute(
-//       "select * from employees where employee_id = :employeeID",
-//       [req.params.employeeID]
-//     );
-//     res.json(employee.rows);
-//   } catch (err) {
-//     res.json({
-//       message: err,
-//     });
-//   } finally {
-//     if (conn) {
-//       await conn.close();
-//     }
-//   }
-// });
 
 router.post("/upload-padron", async (req, res) => {
   try {
@@ -116,7 +202,9 @@ async function insertPadron() {
   const used = process.memoryUsage().heapUsed / 1024 / 1024;
   const time = process.uptime();
   try {
-    const sql = "INSERT INTO PADRON VALUES (:a,:b,:c,:d,:e,:f)";
+    const sql = `BEGIN
+    AgregarElector(:a,:b,:c,:d,:e,:f); 
+    END;`;
     let result = await conn.executeMany(sql, padron, { autoCommit: true });
     console.log(result);
   } catch (err) {

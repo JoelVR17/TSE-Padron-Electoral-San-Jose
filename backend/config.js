@@ -1,6 +1,6 @@
 var config = {
-  user: "",
-  password: "",
+  user: "TSE",
+  password: "tse123",
   connectString: "localhost:1521/oracle",
 };
 
