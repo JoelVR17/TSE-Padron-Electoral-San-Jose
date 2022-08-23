@@ -32,12 +32,7 @@ router.get("/top5nombresmascomunes", async (req, res) => {
   let conn;
   try {
     conn = await oracledb.getConnection(config);
-    const consulta =
-      await conn.execute(`SELECT PADRON.NOMBRE, COUNT(PADRON.NOMBRE) AS TOTAL
-    FROM PADRON
-    GROUP BY PADRON.NOMBRE
-    ORDER BY COUNT(*) DESC
-    FETCH FIRST 5 ROWS ONLY;`);
+    const consulta = await conn.execute(`SELECT * FROM top5nombresmascomunes`);
 
     res.json(consulta.rows);
   } catch (err) {
@@ -56,13 +51,9 @@ router.get("/top5nombresmenoscomunes", async (req, res) => {
   try {
     conn = await oracledb.getConnection(config);
 
-    const consulta =
-      await conn.execute(`SELECT PADRON.NOMBRE, COUNT(PADRON.NOMBRE) AS TOTAL
-    FROM PADRON
-    GROUP BY PADRON.NOMBRE
-    ORDER BY COUNT(*) ASC
-    FETCH FIRST 5 ROWS ONLY;
-    `);
+    const consulta = await conn.execute(
+      `SELECT * FROM top5nombresmenoscomunes`
+    );
 
     res.json(consulta.rows);
   } catch (err) {
@@ -81,10 +72,7 @@ router.get("/top5cantones", async (req, res) => {
   let conn;
   try {
     conn = await oracledb.getConnection(config);
-    const consulta = await conn.execute(`BEGIN
-    top5cantones();
-    END;
-    `);
+    const consulta = await conn.execute(`SELECT * FROM top5cantones`);
     res.json(consulta.rows);
   } catch (err) {
     res.json({
