@@ -89,7 +89,34 @@ end ;
 
 
 
+CREATE OR REPLACE VIEW topMasComunesNombre AS
+    SELECT PADRON.NOMBRE, COUNT(PADRON.NOMBRE) AS TOTAL
+        FROM PADRON
+        GROUP BY PADRON.NOMBRE
+        ORDER BY COUNT(*) DESC
+        FETCH FIRST 5 ROWS ONLY;
 
+        CREATE OR REPLACE VIEW topMenosComunesNombre AS
+    SELECT PADRON.NOMBRE, COUNT(PADRON.NOMBRE) AS TOTAL
+        FROM PADRON
+        GROUP BY PADRON.NOMBRE
+        ORDER BY COUNT(*) ASC
+        FETCH FIRST 5 ROWS ONLY;
+
+        CREATE OR REPLACE VIEW top5cantones AS
+        select  d.canton,
+        p.cuenta
+  from  tse.distelec d,
+        (
+         select  codelec,
+                 count(*) cuenta
+           from  padron
+           group by codelec
+           
+        ) p
+  where p.codelec = d.codelec
+  ORDER BY cuenta desc
+  fetch next 5 rows only;
 
 
 
