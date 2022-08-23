@@ -3,173 +3,210 @@
 
 <!-- HTML -->
 <html lang="en">
-
-<!-- HEAD -->
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/850c2e9361.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/normalize.css">
+  <!-- HEAD -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/850c2e9361.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"
+    />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
     <title>TSE - Consultas</title>
-</head> <!--fin.Head-->
+  </head>
+  <!--fin.Head-->
 
-<!-- BODY -->
-<body>
-
+  <!-- BODY -->
+  <body>
     <!-- HEADER -->
     <header class="header">
-        <nav class="navbar navbar-light" style="padding-left: 1rem; padding-right: 1rem;">
-            <div class="container-fluid">
-                <div class="contenedor__header">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="img/log.png" alt="" width="200" height="70" class="d-inline-block align-text-top">
-                    </a>
-                    <a class="ancla" href="consulta.html">
-                        <p class="ancla">Consultar</p>
-                    </a>
-                    <a class="ancla" href="reporte.html">
-                        <p class="ancla">Reportes</p>
-                    </a>
-                    <a class="ancla" href="distelec.html">
-                        <p class="ancla">Distelec</p>
-                    </a>
-                    <a class="ancla" href="login.html">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </a>
-                </div>
-            </div>
-        </nav>
+      <nav
+        class="navbar navbar-light"
+        style="padding-left: 1rem; padding-right: 1rem"
+      >
+        <div class="container-fluid">
+          <div class="contenedor__header">
+            <a class="navbar-brand" href="index.html">
+              <img
+                src="img/log.png"
+                alt=""
+                width="200"
+                height="70"
+                class="d-inline-block align-text-top"
+              />
+            </a>
+            <a class="ancla" href="consulta.html">
+              <p class="ancla">Consultar</p>
+            </a>
+            <a class="ancla" href="reporte.html">
+              <p class="ancla">Reportes</p>
+            </a>
+            <a class="ancla" href="distelec.html">
+              <p class="ancla">Distelec</p>
+            </a>
+            <a class="ancla" href="login.html">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
     </header>
 
-<!-- MAIN -->
+    <!-- MAIN -->
     <main class="container">
+      <div class="container">
+        <div class="contenedor__titulo">
+          <h1 class="titulo">Consultas</h1>
+        </div>
 
-        <div class="container">
-        
-            <div class="contenedor__titulo">
-                <h1 class="titulo">Consultas</h1>
-            </div>
-    
-            <form action="">
-                <div class="btn-group">
-                    <button type="button" class="btn__cargar dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Consultas</button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Top 5 nombres más comunes</a></li>
-                      <li><a class="dropdown-item" href="#">Top 5 nombres menos comunes</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Nombres que contienen todas las vocales</a></li>
-                    </ul>
-                  </div>
-            </form>
-    
-            <br>
-    
-            <table id="tablaPadron" class="table table-striped">
+        <br />
+        <h2 class="titulo">Top 5 nombres mas comunes</h1>
+        <table id="tablatop5nombresmascomunes" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Total</th>
+            </tr>
+          </thead>
 
-                <thead>
-                    <tr>
-                        <th>Cédula</th>
-                        <th>CODELEC</th>
-                        <th>Fecha Caducidad</th>
-                        <th>Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                </tbody>
-    
-                <tfoot>
-                    <tr>
-                        <th>Cédula</th>
-                        <th>CODELEC</th>
-                        <th>Fecha Caducidad</th>
-                        <th>Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                    </tr>
-                </tfoot>
-    
-            </table>
-    
-            <br/>
+          <tbody></tbody>
 
-        </div> <!--fin-->
-    </main> <!--fin.main-->
+          <tfoot>
+            <tr>
+              <th>Nombre</th>
+              <th>Total</th>
+            </tr>
+          </tfoot>
+        </table>
+        <br/>
+        <h2 class="titulo">Top 5 nombres menos comunes</h1>
+        <table id="tablatop5nombresmenoscomunes" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+
+          <tfoot>
+            <tr>
+              <th>Nombre</th>
+              <th>Total</th>
+            </tr>
+          </tfoot>
+        </table>
+        <br/>
+        <h2 class="titulo">Top 5 cantones con mas votantes</h1>
+
+        <table id="tablatop5cantones" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Canton</th>
+              <th>Cuenta</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+
+          <tfoot>
+            <tr>
+              <th>Canton</th>
+              <th>Cuenta</th>
+            </tr>
+          </tfoot>
+        </table>
+        <br />
+      </div>
+      <!--fin-->
+    </main>
+    <!--fin.main-->
 
     <!-- FOOTER -->
     <footer class="footer">
-        <p class="copyright">Todos los derechos Reservados 2022 &copy;</p>
+      <p class="copyright">Todos los derechos Reservados 2022 &copy;</p>
     </footer>
+  </body>
+  <!--fin.body-->
 
-</body> <!--fin.body-->
-
-<!-- JAVASCRIPT -->
-<script> 
+  <!-- JAVASCRIPT -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <script src="js/script.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"
+  ></script>
+  <script>
     $(document).ready(function () {
+      $.ajax({
+        url: "http://localhost:3000/padron/top5nombresmenoscomunes",
+        method: "GET",
+        cache: "false",
+        headers: { "Cache-Control": "no-store" },
+      }).done(function (data) {
+        $("#tablatop5nombresmenoscomunes").dataTable({
+          aaData: data,
+          columns: [{ data: 0 }, { data: 1 }],
+        });
+      }),
         $.ajax({
-        'url': "http://localhost:3000/distelec",
-        'method': "GET",
-        'cache': 'false',
-        'headers' : {'Cache-Control':'no-store'}
-        
-    }).done( function(data) {
+          url: "http://localhost:3000/padron/top5nombresmascomunes",
+          method: "GET",
+          cache: "false",
+          headers: { "Cache-Control": "no-store" },
+        }).done(function (data) {
+          $("#tablatop5nombresmascomunes").dataTable({
+            aaData: data,
+            columns: [{ data: 0 }, { data: 1 }],
+          });
+        }),
+        $.ajax({
+          url: "http://localhost:3000/padron/top5cantones",
+          method: "GET",
+          cache: "false",
+          headers: { "Cache-Control": "no-store" },
+        }).done(function (data) {
+          $("#tablatop5cantones").dataTable({
+            aaData: data,
+            columns: [{ data: 0 }, { data: 1 }],
+          });
+        });
+    });
 
-        $("#tablaCodelec").dataTable( {
-            "aaData": data,
-            columns: [
-        { data: 0 },
-        { data: 1 },
-        { data: 2 },
-        { data: 3 }
-    ]
-        })
+    $("#cargarPadron").click(() => {
+      $.ajax({
+        url: "http://localhost:3000/padron/insert",
+        method: "GET",
+      }).done(console.log("Done"));
     }),
-
+      $("#cargarDistelec").click(() => {
         $.ajax({
-        'url': "http://localhost:3000/padron",
-        'method': "GET",
-        'cache': 'false',
-        'headers' : {'Cache-Control':'no-store'}
-
-        
-    }).done( function(data) {
-        console.log(data);
-        $("#tablaPadron").dataTable( {
-            "aaData": data,
-            columns: [
-        { data: 0 },
-        { data: 1 },
-        { data: 2 },
-        { data: 3 },
-        { data: 4 },
-        { data: 5 }
-    ]
-        })
-    });
-
-    });
-
-    $("#cargarPadron").click(()=>{
-        $.ajax({
-        'url': "http://localhost:3000/padron/insert",
-        'method': "GET",
-    }).done(console.log("Done"));
-    }),
-    $("#cargarDistelec").click(()=>{
-        $.ajax({
-        'url': "http://localhost:3000/distelec/insert",
-        'method': "GET",
-    }).done(console.log("Done Distelec"));
-    });
-
-</script>
-</html> <!--fin.html-->
+          url: "http://localhost:3000/distelec/insert",
+          method: "GET",
+        }).done(console.log("Done Distelec"));
+      });
+  </script>
+</html>
+<!--fin.html-->
