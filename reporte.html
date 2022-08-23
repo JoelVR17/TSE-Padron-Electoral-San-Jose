@@ -48,9 +48,53 @@
         </nav>
     </header>
 
-    <!-- MAIN -->
+<!-- MAIN -->
     <main class="container">
-        <h1>REPORTES</h1>
+
+        <div class="container">
+        
+            <div class="contenedor__titulo">
+                <h1 class="titulo">Reportes</h1>
+            </div>
+    
+            <form action="">
+                <button id="btnReport" name="btnReport" type="button" class="btn__cargar" >Cargar Reportes</button>
+            </form>
+    
+            <br>
+    
+            <table id="tablaPadron" class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>CODELEC</th>
+                        <th>Fecha Caducidad</th>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                </tbody>
+    
+                <tfoot>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>CODELEC</th>
+                        <th>Fecha Caducidad</th>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                    </tr>
+                </tfoot>
+    
+            </table>
+    
+            <br/>
+
+        </div> <!--fin-->
     </main> <!--fin.main-->
 
     <!-- FOOTER -->
@@ -61,7 +105,68 @@
 </body> <!--fin.body-->
 
 <!-- JAVASCRIPT -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script src="js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script> 
+    $(document).ready(function () {
+        $.ajax({
+        'url': "http://localhost:3000/distelec",
+        'method': "GET",
+        'cache': 'false',
+        'headers' : {'Cache-Control':'no-store'}
+        
+    }).done( function(data) {
 
+        $("#tablaCodelec").dataTable( {
+            "aaData": data,
+            columns: [
+        { data: 0 },
+        { data: 1 },
+        { data: 2 },
+        { data: 3 }
+    ]
+        })
+    }),
+
+        $.ajax({
+        'url': "http://localhost:3000/padron",
+        'method': "GET",
+        'cache': 'false',
+        'headers' : {'Cache-Control':'no-store'}
+
+        
+    }).done( function(data) {
+        console.log(data);
+        $("#tablaPadron").dataTable( {
+            "aaData": data,
+            columns: [
+        { data: 0 },
+        { data: 1 },
+        { data: 2 },
+        { data: 3 },
+        { data: 4 },
+        { data: 5 }
+    ]
+        })
+    });
+
+    });
+
+    $("#cargarPadron").click(()=>{
+        $.ajax({
+        'url': "http://localhost:3000/padron/insert",
+        'method': "GET",
+    }).done(console.log("Done"));
+    }),
+    $("#cargarDistelec").click(()=>{
+        $.ajax({
+        'url': "http://localhost:3000/distelec/insert",
+        'method': "GET",
+    }).done(console.log("Done Distelec"));
+    });
+
+</script>
 </html> <!--fin.html-->
