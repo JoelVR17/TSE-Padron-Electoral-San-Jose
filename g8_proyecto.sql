@@ -57,7 +57,32 @@ VALUES
 (2, 'Usuario');
 
 
-
+/*SP INSERTAR ELECTOR*/
+create or replace procedure AgregarElector (
+p_CEDULA in PADRON.CEDULA%type,
+p_CODELEC in PADRON.CODELEC%type default null 
+,p_FECHACADUC in PADRON.FECHACADUC%type default null 
+,p_NOMBRE in PADRON.NOMBRE%type default null 
+,p_APELLIDO2 in PADRON.APELLIDO2%type default null 
+,p_APELLIDO1 in PADRON.APELLIDO1%type default null 
+) is
+begin
+insert into PADRON(
+CEDULA
+,CODELEC
+,FECHACADUC
+,NOMBRE
+,APELLIDO1
+,APELLIDO2
+) values (
+p_CEDULA
+,p_CODELEC
+,p_FECHACADUC
+,p_NOMBRE
+,p_APELLIDO1
+,p_APELLIDO2
+);
+end ;
 
 
 
