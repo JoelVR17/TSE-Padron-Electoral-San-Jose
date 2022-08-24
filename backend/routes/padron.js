@@ -86,14 +86,11 @@ router.get("/top5cantones", async (req, res) => {
 });
 
 //GET NOMBRES CON LAS 5 VOCALES
-router.get("/reportevocales", async (req, res) => {
+router.get("/consultavocales", async (req, res) => {
   let conn;
   try {
     conn = await oracledb.getConnection(config);
-    const consulta = await conn.execute(`BEGIN
-    reportevocales();
-    END;
-    `);
+    const consulta = await conn.execute(`SELECT * FROM consultavocales`);
 
     res.json(consulta.rows);
   } catch (err) {

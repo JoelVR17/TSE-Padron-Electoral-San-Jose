@@ -135,7 +135,26 @@
             </tr>
           </tfoot>
         </table>
+
         <br />
+        <h2 class="titulo">Nombres con las 5 vocales</h1>
+
+          <table id="consultavocales" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                
+              </tr>
+            </thead>
+  
+            <tbody></tbody>
+  
+            <tfoot>
+              <tr>
+                <th>Nombre</th>
+              </tr>
+            </tfoot>
+          </table>
       </div>
       <!--fin-->
     </main>
@@ -193,20 +212,20 @@
             columns: [{ data: 0 }, { data: 1 }],
           });
         });
+        $.ajax({
+          url: "http://localhost:3000/padron/consultavocales",
+          method: "GET",
+          cache: "false",
+          headers: { "Cache-Control": "no-store" },
+        }).done(function (data) {
+          $("#consultavocales").dataTable({
+            aaData: data,
+            columns: [{ data: 0 }],
+          });
+        });
     });
 
-    $("#cargarPadron").click(() => {
-      $.ajax({
-        url: "http://localhost:3000/padron/insert",
-        method: "GET",
-      }).done(console.log("Done"));
-    }),
-      $("#cargarDistelec").click(() => {
-        $.ajax({
-          url: "http://localhost:3000/distelec/insert",
-          method: "GET",
-        }).done(console.log("Done Distelec"));
-      });
+   
   </script>
 </html>
 <!--fin.html-->
